@@ -1,12 +1,12 @@
 ##
 #suppressWarnings(suppressMessages( library(R6, quietly=TRUE) ))
 #suppressWarnings(suppressMessages( library(deSolve, quietly=TRUE) ))
-#
-source('modelFunk.r')
-source('prodOutputFunk.r')
-source('classifyFunk.r')
-source('parSelfParFunk.r')
-source('prodOptimizeFunk.r')
+##
+#source('modelFunk.r')
+#source('prodOutputFunk.r')
+#source('classifyFunk.r')
+#source('parSelfParFunk.r')
+#source('prodOptimizeFunk.r')
 
 #
 #CLASS
