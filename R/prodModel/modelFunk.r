@@ -1,4 +1,7 @@
-#
+#' A list of functions for internal use that formats a generic function for internal use
+#'
+#' @param self a proModel object
+#' @param data data to be used with likelihood
 dLikes = list(
         #
         LN = function(self, data){
@@ -10,7 +13,10 @@ dLikes = list(
         }
 )
 
-#
+#' A list of functions for internal use that formats a generic function for internal use
+#'
+#' @param self a prodModel object
+#' @param prob probability to be used with likelihood to get quantile
 qLikes = list(
         #
         LN = function(self, prob){

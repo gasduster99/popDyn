@@ -1,11 +1,16 @@
-#
-suppressWarnings(suppressMessages( library(GGally, quietly=TRUE) ))
-suppressWarnings(suppressMessages( library(mvtnorm, quietly=TRUE) ))
+##
+#suppressWarnings(suppressMessages( library(GGally, quietly=TRUE) ))
+#suppressWarnings(suppressMessages( library(mvtnorm, quietly=TRUE) ))
 
 #
 #
 
-#
+#' A function primarily for internal use that make colors transparent.
+#'
+#' @param  someColor a color given however R handles a color
+#' @param  alpha     the alpha channel value that wil be added
+#'
+#' @return a version of someColor with the alpha channel added
 makeTransparent = function(someColor, alpha=100){
         newColor = col2rgb(someColor)
         apply(newColor, 2, function(curcoldata){
@@ -16,7 +21,10 @@ makeTransparent = function(someColor, alpha=100){
 #
 #
 
-#
+#' A function to print
+#'
+#' @param ins  
+#' @param outs 
 printSelf = function(ins, outs=c()){
         #
         n = 5
@@ -45,7 +53,12 @@ printSelf = function(ins, outs=c()){
         }
 }
 
-#
+#' A function to plot the mean of the dynamics
+#'
+#' @param col   
+#' @param alpha 
+#' @param lwd   
+#' @param add
 plotMean = function(col='black', alpha=100, lwd=3, add=F){
         #arguments passed directly to plotting functions
 
@@ -64,7 +77,11 @@ plotMean = function(col='black', alpha=100, lwd=3, add=F){
         }
 }
 
-#
+#' A function to plot uncertainty bands 
+#'
+#' @param prob  Size of the uncertainty bands as defined as posterior probability
+#' @param col   
+#' @param alpha 
 plotBand = function(prob=0.95, col='black', alpha=100){
         #arguments passed directly to plotting functions
 
@@ -82,19 +99,23 @@ plotBand = function(prob=0.95, col='black', alpha=100){
         )
 }
 
-#
+#' A function to plot repeated sampling posterior-like parameter distributions
+#'
+#' @param m      the number of samples from the repeated sampling distribution
+#' @param sample a boolean to indicate if samples should be returned
+#' @param save   a boolean to indicate if samples should be saved 
 plotRS = function(m=10^4, sample=F, save=F){
         #m      : how many samples
         #save   : FALSE or a filename
 
         #
         parNames = colnames(self$rsCov)
-        sam = rmvnorm(m, private$selfToPar(parNames), self$rsCov)
+        sam = mvtnorm::rmvnorm(m, private$selfToPar(parNames), self$rsCov)
         #
         if(save==F){
-                GGally::print_if_interactive(ggpairs(as.data.frame(sam)))
+                GGally::print_if_interactive(GGally::ggpairs(as.data.frame(sam)))
         } else{
-                ggsave(filename=save, plot=ggpairs(as.data.frame(sam)))
+		GGally::ggsave(filename=save, plot=GGally::ggpairs(as.data.frame(sam)))
         }
         #
         if(sample){ return(sam) }

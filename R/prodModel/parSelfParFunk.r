@@ -1,4 +1,8 @@
-#
+#' A function primarily for internal use 
+#'
+#' @param  selfToPar 
+#'
+#' @return parameter values taken from self
 selfToPar = function(parNames){
         #check if variable names exist
 
@@ -16,6 +20,10 @@ selfToPar = function(parNames){
 }
 
 #NOTE: parValues should be passed with names
+
+#' A function primarily for internal use
+#'
+#' @param  parValues values of parameters given as named objects to be registered with self
 parToSelf = function(parValues){
         #check is names exist
 

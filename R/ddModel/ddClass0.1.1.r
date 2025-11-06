@@ -1,6 +1,7 @@
 ##
 #suppressWarnings(suppressMessages( library(R6, quietly=TRUE) ))
 #suppressWarnings(suppressMessages( library(deSolve, quietly=TRUE) ))
+
 #
 source('modelFunk.r')
 source('outputFunk.r')
@@ -15,7 +16,7 @@ source('optimizeFunk.r')
 #' The main delay differential modeling class definition
 #'
 #' @return an initializer for the ddModel class
-ddModel = R6Class("DDModel", lock_objects=FALSE,
+ddModel = R6::R6Class("DDModel", lock_objects=FALSE,
 	#
 	public = list(
 		#pop
@@ -103,7 +104,7 @@ ddModel = R6Class("DDModel", lock_objects=FALSE,
 
 			#solve 
         		#capture.output( self$N <- ode(self$N0, self$time, private$dNdt, parms=NULL, method=method)[,2], file="/dev/null" )
-			capture.output( out <- dede(c(self$N0, self$B0), self$time, private$dNdt, parms=NULL, method=method), file="/dev/null" )
+			capture.output( out <- deSolve::dede(c(self$N0, self$B0), self$time, private$dNdt, parms=NULL, method=method), file="/dev/null" )
 			self$N = out[,2]
 			self$B = out[,3]
 		},

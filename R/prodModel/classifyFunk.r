@@ -1,4 +1,7 @@
-#
+#' A function for internal use that formats the dNdt function for internal use
+#'
+#' @param fun     the function to internalize
+#' @param numPars number of parameters used by fun
 dNdt_classify = function(fun, numPars=2){
         #
         name = as.character(substitute(fun))
@@ -16,7 +19,9 @@ dNdt_classify = function(fun, numPars=2){
         body(private$dNdt) = parse( text=c('{', bdy, '}') )
 }
 
-#
+#' A function for internal use that formats the N0 function for internal use
+#'
+#' @param fun     the function to internalize
 N0_classify = function(fun){
         #
 
@@ -36,7 +41,10 @@ N0_classify = function(fun){
         eval(parse( text=sprintf("body(self$%s)=parse(text=c('{', bdy, '}'))", name) ))
 }
 
-#
+#' A function for internal use that formats a generic function for internal use
+#'
+#' @param fun     the function to internalize
+#' @param numPars number of parameters used by fun
 classify = function(fun, numPars=1){
         #
 

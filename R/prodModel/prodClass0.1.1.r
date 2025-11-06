@@ -1,6 +1,6 @@
-#
-suppressWarnings(suppressMessages( library(R6, quietly=TRUE) ))
-suppressWarnings(suppressMessages( library(deSolve, quietly=TRUE) ))
+##
+#suppressWarnings(suppressMessages( library(R6, quietly=TRUE) ))
+#suppressWarnings(suppressMessages( library(deSolve, quietly=TRUE) ))
 #
 source('modelFunk.r')
 source('outputFunk.r')
@@ -12,8 +12,10 @@ source('optimizeFunk.r')
 #CLASS
 #
 
-#
-prodModel = R6Class("ProdModel", lock_objects=FALSE,
+#' The main production modeling class definition
+#'
+#' @return an initializer for the prodModel class
+prodModel = R6::R6Class("ProdModel", lock_objects=FALSE,
 	#
 	public = list(
 		#pop
@@ -83,7 +85,7 @@ prodModel = R6Class("ProdModel", lock_objects=FALSE,
                         rownames(self$N) = sprintf("TIME %d", self$time)
 			
 			#solve 
-        		capture.output( self$N <- ode(self$N0, self$time, private$dNdt, parms=NULL, method=method)[,2], file="/dev/null" )
+        		capture.output( self$N <- deSolve::ode(self$N0, self$time, private$dNdt, parms=NULL, method=method)[,2], file="/dev/null" )
 		},
 		
 		#
