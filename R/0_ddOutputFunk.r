@@ -21,7 +21,7 @@ makeTransparent = function(someColor, alpha=100){
 #
 #
 
-#' A function to print
+#' A function for internal use to print
 #'
 #' @param ins  
 #' @param outs 
@@ -53,7 +53,7 @@ printSelf = function(ins, outs=c()){
         }
 }
 
-#' A function to plot an abitratry transformation of model paratmeters thru time
+#' A function for internal use to plot an abitratry transformation of model paratmeters thru time
 #'
 #' @param quan  a quantity to plot given as a function
 #' @param col   
@@ -84,7 +84,7 @@ plotQuan = function(quan=function(B){B}, col='black', alpha=100, lwd=3, add=F, .
         }
 }
 
-#' A function to plot the mean of the dynamics
+#' A function for internal use to plot the mean of the dynamics
 #'
 #' @param col   
 #' @param alpha 
@@ -108,7 +108,7 @@ plotMean = function(col='black', alpha=100, lwd=3, add=F){
         }
 }
 
-#' A function to plot uncertainty bands 
+#' A function for internal use to plot uncertainty bands 
 #'
 #' @param prob  Size of the uncertainty bands as defined as posterior probability
 #' @param col   
@@ -130,7 +130,7 @@ plotBand = function(prob=0.95, col='black', alpha=100){
         )
 }
 
-#' A function to plot repeated sampling posterior-like parameter distributions
+#' A function for internal use to plot repeated sampling posterior-like parameter distributions
 #'
 #' @param m      the number of samples from the repeated sampling distribution
 #' @param sample a boolean to indicate if samples should be returned

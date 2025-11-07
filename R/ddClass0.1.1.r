@@ -13,32 +13,58 @@
 #CLASS
 #
 
-#' The main delay differential modeling class definition
+#' @description The main delay differential modeling class definition
 #'
 #' @return an initializer for the ddModel class
+#'
+#' @export
 ddModel = R6::R6Class("DDModel", lock_objects=FALSE,
 	#
 	public = list(
-		#pop
+		#POP
+		#' @field N      a vector of population numbers
 		N  = NA,
+		#' @field N0     a scalar initial condition for numbers
 		N0 = NA,
+		#' @field B      a vector of population biomass
 		B  = NA,
-		B0 = NA,	
+		#' @field B0     a scalar initial condition for biomass
+		B0 = NA,
+		#' @field N0Funk a function defining the equilibrium vigin numbers as a function of the productivity parameters
 		N0Funk = NA,
+		#' @field B0Funk a function defining the equilibrium vigin biomass as a function of the productivity parameters
 		B0Funk = NA,
-		#time
+
+		#TIME
+		#' @field time   a vector of times for which to integrate the dynamics to
 		time = NA,
-		#model
-                lsdo = NA, 
-		lq = 0, #log proportionality constant between cpue and N
+
+		#MODEL
+		#' @field lsdo    a scalar of the log scale residual sd
+                lsdo = NA,
+	        #' @field lq      a scalar of the log proportionality constant between cpue and B
+		lq = 0, 
+		#' @field model   a list of strings indicating the residual model, etc.
 		model = list(observation="LN"),
-                prior = list(),
-		#functions
-		#computational
+		#prior = list(),
+
+		#COMPUTATION
+		#' @field ODE_method a string specifing the integration method to be used by dede
 		ODE_method = 'lsode',
+		#' @field OPT_method a string specifing the optimization method to be used by optim
 		OPT_method = 'L-BFGS-B',
 		
-		#
+		#' @description
+    		#' Create a new instance of the ddModel class
+    		#'
+    		#' @param N0     a scalar initial condition for numbers
+    		#' @param B0     a scalar initial condition for biomass
+    		#' @param time   a vector of times for which to integrate the dynamics to
+		#' @param derivs a function that evaluates the delay differential equation that defines numbers and biomass dynamics.
+		#' @param N0Funk a function defining the equilibrium vigin numbers as a function of the productivity parameters
+    		#' @param B0Funk a function defining the equilibrium vigin biomass as a function of the productivity parameters
+		#'
+		#' @return An instance of the ddModel class, for which data can be provided, parameters optimized and quantities plotted.
 		initialize = function( 	N0   = NA,
 					B0   = NA,
 					time = NA,
@@ -79,7 +105,11 @@ ddModel = R6::R6Class("DDModel", lock_objects=FALSE,
 			rownames(self$B) = sprintf("TIME %d", time)
 		},
 		
-		#
+		#' @description A function to integrate the dynamics equations over the times in 'time'
+                #'
+                #' @param method an optional string specifing the integration method to be used by dede 
+		#'
+		#' @return NULL B and N are updated interally.
 		iterate = function(method=self$ODE_method){
 			#method	: optionally update the ODE method to be handed to the ode function (default 'rk4')
 			#
@@ -109,11 +139,28 @@ ddModel = R6::R6Class("DDModel", lock_objects=FALSE,
 			self$B = out[,3]
 		},
 		
-		#
+		#' @description A function to optimize model parameter given the data provided
+		#'
+		#' @param data     A vector of data used to fit specified model.
+		#' @param parNames A vector of strings matching the names of the parameters to be optimized
+		#' @param lower    A vector of lower bounds for searching parameter space.
+		#' @param upper    A vector of upper bounds for searching parameter space.
+		#' @param method   A string optionally defining the method of optimization to be handed to optim (default 'L-BFGS-B')
+		#' @param cov      A logical optionally indicating if hessian should be computed and inverted in optimization process
+		#' @param fitQ     A logical indicating whether to find the MLE of log(q):lq via profile MLE, or if False don't change the initialized value of lq.
+		#' @param gaBoost  A logical optionally (default F) indicating if a persistent genetic algorithm should be used to assist local optimization. Genetic algorithm repeates until first and second finite difference derivatives are successful and hessian is inverted. Optionally gaBoost may be given as a list containting names values for list(popSize, maxiter, run).
+		#' @param persistFor A numeric indicating how many iterations of optimization tryCatch to engange in.
+		#' @param control  Additional control parameters to be passed to optim
+		#'
+		#' @return Optimization objects are returned. Parameters values are updated inplace. rsCov is defined to self.
                 optimize = optimize,
 		
-		#
+		#' @description A function to print
+		#' @param ins  
+		#' @param outs
 		printer   = printSelf, 
+		#' @description The main function for printing this class
+		#' @param ins
 		printSelf = function(ins=c()){
 			self$printer(ins, outs=c(
 				"iterate", "optimize", "model",	"prior", "like",
@@ -121,14 +168,40 @@ ddModel = R6::R6Class("DDModel", lock_objects=FALSE,
 				"quan", "N0Funk", "B0Funk", "save", "load", "printer"
 			))
 		},
+		#' @description A function to plot an abitratry transformation of model paratmeters thru time
+		#' @param quan  A quantity to plot given as a function
+		#' @param col   
+		#' @param alpha 
+		#' @param lwd   
+		#' @param add   
+		#' @param ...
 		plotQuan = plotQuan,
+		#' @description A function to plot the mean of the dynamics
+		#' @param col
+		#' @param alpha
+		#' @param lwd
+		#' @param add   
 		plotMean = plotMean,
+		#' @description A function to plot uncertainty bands
+		#' @param prob  Size of the uncertainty bands as defined as posterior probability
+		#' @param col
+		#' @param alpha 
 		plotBand = plotBand,
+		#' @description  A function to plot repeated sampling posterior-like parameter distributions
+		#' @param m      The number of samples from the repeated sampling distribution
+		#' @param sample A boolean to indicate if samples should be returned
+		#' @param save   A boolean to indicate if samples should be saved 
 		plotRS 	 = plotRS,
-		#
+		
+		#' @description    A function to save the ddModel class as an rds file.
+                #' @param fileName A string defining the name and path of the file to be saved. It should probably end with the .rds extension.
 		save = function(fileName){ saveRDS(self, file=fileName) },
+		#' @description    A function to read in a ddModel class from .rds file.
+                #' @param fileName A string of the name and path of the file to be loaded.
 		load = function(fileName){ readRDS(fileName) },
-		#
+
+		#' @description A function to calculate the likelihood of the model given the data 
+                #' @param data  A vector of the given index data.
 		like = function(data){ sum(private$dLikes[[self$model$observation]](self, data)) }
 	),
 	

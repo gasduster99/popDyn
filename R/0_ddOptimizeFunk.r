@@ -4,7 +4,7 @@
 #
 #
 
-#' A function to optimize model parameter given the data provided
+#' A function for internal usage within the ddModel class to optimize model parameter given the data provided
 #'
 #' @param data     A vector of data used to fit specified model.
 #' @param parNames A vector of strings matching the names of the parameters to be optimized
