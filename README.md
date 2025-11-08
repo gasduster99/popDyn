@@ -58,17 +58,19 @@ following in an R shell:
     fitPT$plotMean(add=T, col="blue")
     fitPT$plotBand(col="blue")
 
-## Preloaded Schnute Model
+## Preloaded Schnute prodModel
 
 # Delay Differential Models
 
-## Schnute-Deriso Delay Differential Model\[1\]
+## Schnute-Deriso Delay Differential Model \[1\]
 
 ``` 
 ```
 
-pre loaded schnute model
+## Preloaded Schnute ddModel
 
-shiny plot
+### Shiny Plot
 
-1.  This is the content of the footnote.
+1.  Walters, The Continuous Time Schnute-Deriso Delaydifference Model
+    for Age-Structured Population Dynamics, with Example Application to
+    the Peru Anchoveta Stock.
