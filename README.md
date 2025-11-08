@@ -9,9 +9,9 @@ following in an R shell:
     install.packages("devtools") #if required
     devtools::install_github("gasduster99/popDyn")
 
-# Simple Production Model
+## Simple Production Model
 
-## Schaefer Model Example
+### Schaefer Model Example
 
     #data
     cpue  = c(1.78, 1.31, 0.91, 0.96, 0.88, 0.90, 0.87, 0.72, 0.57, 0.45, 0.42, 0.42, 0.49, 0.43, 0.40, 0.45, 0.55, 0.53, 0.58, 0.64, 0.66, 0.65, 0.63)
@@ -58,18 +58,20 @@ following in an R shell:
     fitPT$plotMean(add=T, col="blue")
     fitPT$plotBand(col="blue")
 
-## Preloaded Schnute prodModel
+### Preloaded Schnute prodModel
 
-# Delay Differential Models
+## Delay Differential Models
 
-## Schnute-Deriso Delay Differential Model \[1\]
+### Schnute-Deriso Delay Differential Model \[1\]
 
 ``` 
 ```
 
-## Preloaded Schnute ddModel
+### Preloaded Schnute ddModel
 
-### Shiny Plot
+#### Shiny Plot
+
+## Bibliography
 
 1.  [Walters, The Continuous Time Schnute-Deriso Delaydifference Model
     for Age-Structured Population Dynamics, with Example Application to

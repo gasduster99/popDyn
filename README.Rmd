@@ -22,9 +22,9 @@ install.packages("devtools") #if required
 devtools::install_github("gasduster99/popDyn")
 ```
 
-# Simple Production Model
+## Simple Production Model
 
-## Schaefer Model Example
+### Schaefer Model Example
 
 ```
 #data
@@ -73,16 +73,18 @@ fitPT$plotMean(add=T, col="blue")
 fitPT$plotBand(col="blue")
 ```
 
-## Preloaded Schnute prodModel
+### Preloaded Schnute prodModel
 
-# Delay Differential Models
+## Delay Differential Models
 
-## Schnute-Deriso Delay Differential Model ^[[Walters, The Continuous Time Schnute-Deriso Delaydifference Model for Age-Structured Population Dynamics, with Example Application to the Peru Anchoveta Stock.](https://fisheries-2023.sites.olt.ubc.ca/files/2020/06/1Continuous-time-Schnute-Deriso-model-Final.pdf)]
+### Schnute-Deriso Delay Differential Model ^[[Walters, The Continuous Time Schnute-Deriso Delaydifference Model for Age-Structured Population Dynamics, with Example Application to the Peru Anchoveta Stock.](https://fisheries-2023.sites.olt.ubc.ca/files/2020/06/1Continuous-time-Schnute-Deriso-model-Final.pdf)]
 
 ```
 ```
 
-## Preloaded Schnute ddModel
+### Preloaded Schnute ddModel
 
-### Shiny Plot
+#### Shiny Plot
+
+## Bibliography
 
