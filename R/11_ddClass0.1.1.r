@@ -54,12 +54,11 @@ ddModel = R6::R6Class("DDModel", lock_objects=FALSE,
 		#' @field OPT_method a string specifing the optimization method to be used by optim
 		OPT_method = 'L-BFGS-B',
 		
-		#' @description
-    		#' Create a new instance of the ddModel class
+		#' @description Create a new instance of the ddModel class
     		#'
-    		#' @param N0     a scalar initial condition for numbers
-    		#' @param B0     a scalar initial condition for biomass
-    		#' @param time   a vector of times for which to integrate the dynamics to
+    		#' @param N0 a scalar initial condition for numbers
+    		#' @param B0 a scalar initial condition for biomass
+    		#' @param time a vector of times for which to integrate the dynamics to
 		#' @param derivs a function that evaluates the delay differential equation that defines numbers and biomass dynamics.
 		#' @param N0Funk a function defining the equilibrium vigin numbers as a function of the productivity parameters
     		#' @param B0Funk a function defining the equilibrium vigin biomass as a function of the productivity parameters
@@ -156,11 +155,11 @@ ddModel = R6::R6Class("DDModel", lock_objects=FALSE,
                 optimize = optimize,
 		
 		#' @description A function to print
-		#' @param ins  
-		#' @param outs
+		#' @param ins ins 
+		#' @param outs outs
 		printer   = printSelf, 
 		#' @description The main function for printing this class
-		#' @param ins
+		#' @param ins ins
 		printSelf = function(ins=c()){
 			self$printer(ins, outs=c(
 				"iterate", "optimize", "model",	"prior", "like",
@@ -170,22 +169,22 @@ ddModel = R6::R6Class("DDModel", lock_objects=FALSE,
 		},
 		#' @description A function to plot an abitratry transformation of model paratmeters thru time
 		#' @param quan  A quantity to plot given as a function
-		#' @param col   
-		#' @param alpha 
-		#' @param lwd   
-		#' @param add   
-		#' @param ...
+		#' @param col   A color given however R colors are given
+		#' @param alpha An alpha level between 0 and 255
+		#' @param lwd   Line width
+		#' @param add   A boolean indicating if the plot should be added to the existing device or not 
+		#' @param ...   Additional arguments to pass for plotting 
 		plotQuan = plotQuan,
 		#' @description A function to plot the mean of the dynamics
-		#' @param col
-		#' @param alpha
-		#' @param lwd
-		#' @param add   
+		#' @param col   A color given however R colors are given
+		#' @param alpha An alpha level between 0 and 255
+		#' @param lwd   Line width
+		#' @param add   A boolean indicating if the plot should be added to the existing device or not
 		plotMean = plotMean,
 		#' @description A function to plot uncertainty bands
 		#' @param prob  Size of the uncertainty bands as defined as posterior probability
-		#' @param col
-		#' @param alpha 
+		#' @param col   A color given however R colors are given
+		#' @param alpha An alpha level between 0 and 255
 		plotBand = plotBand,
 		#' @description  A function to plot repeated sampling posterior-like parameter distributions
 		#' @param m      The number of samples from the repeated sampling distribution

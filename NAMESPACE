@@ -1,5 +1,6 @@
 # Export all names
-exportPattern(".")
+#exportPattern(".")
+exportPattern("ddClass0.1.1.r", "prodClass0.1.1.r")
 # From Notes
 importFrom("GA", "ga")
 importFrom("R6", "R6Class")

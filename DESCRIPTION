@@ -23,4 +23,4 @@ Imports:
 	mvtnorm,
 	deSolve	
 Depends: 
-	R
+	R (>= 4.0.0)

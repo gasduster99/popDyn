@@ -12,6 +12,6 @@ document()
 #check the structure of your R package so far
 check()
 #edit README.rmd and this function builds the README.md
-#build_readme()
+build_readme()
 #similate installing the package and importing it
 load_all()
