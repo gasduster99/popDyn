@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 # popDyn
 
-To install the latest version of the `calcomExpansions` package you can run the
+To install the latest version of the `popDyn` package you can run the
 following in an R shell:
 ```
 install.packages("devtools") #if required
@@ -24,7 +24,7 @@ devtools::install_github("gasduster99/popDyn")
 
 # Simple Production Model
 
-## Schaefer Model
+## Schaefer Model Example
 
 ```
 #data
@@ -75,9 +75,9 @@ fitPT$plotBand(col="blue")
 
 ## Preloaded Schnute Model
 
-# Delay Differential Model
+# Delay Differential Models
 
-
+## Schnute-Deriso Delay Differential Model^[This is the content of the footnote.] 
 
 ```
 ```

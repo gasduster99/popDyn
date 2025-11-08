@@ -3,15 +3,15 @@
 
 # popDyn
 
-To install the latest version of the `calcomExpansions` package you can
-run the following in an R shell:
+To install the latest version of the `popDyn` package you can run the
+following in an R shell:
 
     install.packages("devtools") #if required
     devtools::install_github("gasduster99/popDyn")
 
 # Simple Production Model
 
-## Schaefer Model
+## Schaefer Model Example
 
     #data
     cpue  = c(1.78, 1.31, 0.91, 0.96, 0.88, 0.90, 0.87, 0.72, 0.57, 0.45, 0.42, 0.42, 0.49, 0.43, 0.40, 0.45, 0.55, 0.53, 0.58, 0.64, 0.66, 0.65, 0.63)
@@ -58,12 +58,17 @@ run the following in an R shell:
     fitPT$plotMean(add=T, col="blue")
     fitPT$plotBand(col="blue")
 
-preloaded schnute model
+## Preloaded Schnute Model
 
-# Delay Differential Model
+# Delay Differential Models
 
-BH
+## Schnute-Deriso Delay Differential Model\[1\]
+
+``` 
+```
 
 pre loaded schnute model
 
 shiny plot
+
+1.  This is the content of the footnote.
