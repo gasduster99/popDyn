@@ -24,7 +24,7 @@ devtools::install_github("gasduster99/popDyn")
 
 # Simple Production Model
 
-Schaefer Model
+## Schaefer Model
 
 ```
 #data
@@ -52,9 +52,9 @@ dNdt = function(t, N, lalpha, lbeta, gamma, catch){
 #initialize prodModel class
 schaeferModel = prodModel$new(
 	dNdt=dNdt, N0Funk=function(lbeta){exp(lbeta)},	#Dynamics 
-	time=1:TT, catch=catch,						#Givens
-	lalpha=-1, lbeta=8,						#Productivity Parameters
-	lq=log(0.0005), lsdo=-2.1176758				#Nuisance Parameters
+	time=1:TT, catch=catch,	#Givens
+	lalpha=-1, lbeta=8,	#Productivity Parameters
+	lq=log(0.0005), lsdo=-2.1176758	#Nuisance Parameters
 )
 
 #optimize
@@ -67,14 +67,20 @@ optS = schaeferModel$optimize(cpue,
        	fitQ 	= T
 )
 
-
+#plot
+plot(schaeferModel$time, cpue)
+fitPT$plotMean(add=T, col="blue")
+fitPT$plotBand(col="blue")
 ```
 
-preloaded schnute model
+## Preloaded Schnute Model
 
 # Delay Differential Model
 
-BH
+
+
+```
+```
 
 pre loaded schnute model
 

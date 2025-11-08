@@ -11,50 +11,52 @@ run the following in an R shell:
 
 # Simple Production Model
 
-Schaefer Model
+## Schaefer Model
 
-``` 
-#data
-cpue  = c(1.78, 1.31, 0.91, 0.96, 0.88, 0.90, 0.87, 0.72, 0.57, 0.45, 0.42, 0.42, 0.49, 0.43, 0.40, 0.45, 0.55, 0.53, 0.58, 0.64, 0.66, 0.65, 0.63)
-catch = c(94, 212, 195, 383, 320, 402, 366, 606, 378, 319, 309, 389, 277, 254, 170, 97, 91, 177, 216, 229, 211, 231, 223)
-TT = length(cpue)
-
-#define Schaefer model ODE 
-#log productivity parameterization improves optimization.
-dNdt = function(t, N, lalpha, lbeta, gamma, catch){
-        #linearly interpolate catches
-        ft = floor(t)
-        q  = (t-ft)
-        Cl = catch[ft]
-        Cu = catch[ft+1]
-        C = q*Cu + (1-q)*Cl
-        if(q==0){ C=Cl }
-        #
-        R = exp(lalpha)*P/(gamma-1)*(1-(N/exp(lbeta))^(gamma-1))
-        out = R - C 
-        #
-        return( list(out) )
-}
-
-#initialize prodModel class
-schaeferModel = prodModel$new(
-    dNdt=dNdt, N0Funk=function(lbeta){exp(lbeta)},  #Dynamics 
-    time=1:TT, catch=catch,                     #Givens
-    lalpha=-1, lbeta=8,                     #Productivity Parameters
-    lq=log(0.0005), lsdo=-2.1176758             #Nuisance Parameters
-)
-
-#optimize
-optS = schaeferModel$optimize(cpue,
-        c('lsdo', 'lalpha', 'lbeta'),
-        lower   = c(log(0.001), log(0.1), log(1000)),
-        upper   = c(log(0.3), 0, log(10000)),
-        gaBoost = T,
-        cov     = T,
-        fitQ    = T
-)
-
-```
+    #data
+    cpue  = c(1.78, 1.31, 0.91, 0.96, 0.88, 0.90, 0.87, 0.72, 0.57, 0.45, 0.42, 0.42, 0.49, 0.43, 0.40, 0.45, 0.55, 0.53, 0.58, 0.64, 0.66, 0.65, 0.63)
+    catch = c(94, 212, 195, 383, 320, 402, 366, 606, 378, 319, 309, 389, 277, 254, 170, 97, 91, 177, 216, 229, 211, 231, 223)
+    TT = length(cpue)
+    
+    #define Schaefer model ODE 
+    #log productivity parameterization improves optimization.
+    dNdt = function(t, N, lalpha, lbeta, gamma, catch){
+            #linearly interpolate catches
+            ft = floor(t)
+            q  = (t-ft)
+            Cl = catch[ft]
+            Cu = catch[ft+1]
+            C = q*Cu + (1-q)*Cl
+            if(q==0){ C=Cl }
+            #
+            R = exp(lalpha)*P/(gamma-1)*(1-(N/exp(lbeta))^(gamma-1))
+            out = R - C 
+            #
+            return( list(out) )
+    }
+    
+    #initialize prodModel class
+    schaeferModel = prodModel$new(
+        dNdt=dNdt, N0Funk=function(lbeta){exp(lbeta)},  #Dynamics 
+        time=1:TT, catch=catch, #Givens
+        lalpha=-1, lbeta=8, #Productivity Parameters
+        lq=log(0.0005), lsdo=-2.1176758 #Nuisance Parameters
+    )
+    
+    #optimize
+    optS = schaeferModel$optimize(cpue,
+            c('lsdo', 'lalpha', 'lbeta'),
+            lower   = c(log(0.001), log(0.1), log(1000)),
+            upper   = c(log(0.3), 0, log(10000)),
+            gaBoost = T,
+            cov     = T,
+            fitQ    = T
+    )
+    
+    #plot
+    plot(schaeferModel$time, cpue)
+    fitPT$plotMean(add=T, col="blue")
+    fitPT$plotBand(col="blue")
 
 preloaded schnute model
 
