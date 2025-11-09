@@ -77,7 +77,7 @@ dNdtSchaefer = function(t, N, lalpha, lbeta, catch){
 
 #initialize prodModel class
 schaeferModel = prodModel$new(
-	dNdt=dNdtSchaefer, N0Funk=function(lbeta){exp(lbeta)},	#Dynamics 
+	dNdt=dNdtSchaefer, N0Funk=function(lbeta){1/exp(lbeta)},	#Dynamics 
 	time=1:TT, catch=catch,	#Time Varying Givens
 	lalpha=-1, lbeta=8,	#Productivity Parameters
 	lq=log(0.0005), lsdo=-2.1176758	#Nuisance Parameters
