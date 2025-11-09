@@ -18,11 +18,12 @@ RoxygenNote: 7.3.3
 Imports: 
 	GA,
 	R6,
-	Ryacas,	
+	Ryacas,
+	pracma,
 	GGally,
 	ggplot2,
 	mvtnorm,
 	deSolve,
-	rootSolve,	
+	rootSolve	
 Depends: 
 	R (>= 4.0.0)

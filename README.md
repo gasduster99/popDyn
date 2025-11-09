@@ -1,13 +1,13 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# popDyn
+# fishKitLearn
 
-To install the latest version of the `popDyn` package you can run the
-following in an R shell:
+To install the latest version of the `fishKitLearn` package you can run
+the following in an R shell:
 
     install.packages("devtools") #if required
-    devtools::install_github("gasduster99/popDyn")
+    devtools::install_github("gasduster99/fishKitLearn")
 
 ## Simple Production Model
 
@@ -61,7 +61,7 @@ following in an R shell:
     #initialize prodModel class
     schaeferModel = prodModel$new(
         dNdt=dNdtSchaefer, N0Funk=function(lbeta){1/exp(lbeta)},    #Dynamics 
-        time=1:TT, catch=catch, #Time Varying Givens
+        time=1:TT, catch=catch, #Constants
         lalpha=-1, lbeta=8, #Productivity Parameters
         lq=log(0.0005), lsdo=-2.1176758 #Nuisance Parameters
     )
@@ -88,7 +88,7 @@ following in an R shell:
 ``` 
 ```
 
-#### Shiny Plot
+#### Shiny App
 
 ### Manual BH ddModel configuration
 

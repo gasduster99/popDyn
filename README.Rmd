@@ -13,13 +13,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-# popDyn
+# fishKitLearn
 
-To install the latest version of the `popDyn` package you can run the
+To install the latest version of the `fishKitLearn` package you can run the
 following in an R shell:
 ```
 install.packages("devtools") #if required
-devtools::install_github("gasduster99/popDyn")
+devtools::install_github("gasduster99/fishKitLearn")
 ```
 
 ## Simple Production Model
