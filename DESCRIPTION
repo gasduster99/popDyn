@@ -21,6 +21,7 @@ Imports:
 	GGally,
 	ggplot2,
 	mvtnorm,
-	deSolve	
+	deSolve,
+	rootSolve	
 Depends: 
 	R (>= 4.0.0)

@@ -29,7 +29,7 @@ following in an R shell:
             C = q*Cu + (1-q)*Cl
             if(q==0){ C=Cl }
             #
-            R = exp(lalpha)*P/(gamma-1)*(1-(N/exp(lbeta))^(gamma-1))
+            R = exp(lalpha)*N/(gamma-1)*(1-(N/exp(lbeta))^(gamma-1))
             out = R - C 
             #
             return( list(out) )
@@ -38,7 +38,7 @@ following in an R shell:
     #initialize prodModel class
     schaeferModel = prodModel$new(
         dNdt=dNdt, N0Funk=function(lbeta){exp(lbeta)},  #Dynamics 
-        time=1:TT, catch=catch, #Givens
+        time=1:TT, catch=catch, #Time Varying Givens
         lalpha=-1, lbeta=8, #Productivity Parameters
         lq=log(0.0005), lsdo=-2.1176758 #Nuisance Parameters
     )

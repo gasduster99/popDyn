@@ -1,6 +1,7 @@
 #EXPORT
 export(ddModel)
 export(prodModel)
+export(schnuteProdModel)
 # From Notes
 importFrom("GA", "ga")
 importFrom("R6", "R6Class")
@@ -8,7 +9,8 @@ importFrom("GGally", "print_if_interactive", "ggpairs")
 importFrom("ggplot2", "ggsave")
 importFrom("mvtnorm", "rmvnorm")
 importFrom("deSolve", "ode", "dede")
-#
+importFrom("rootSolve", "uniroot.all")
+# default stuff from debugger
 importFrom("grDevices", "col2rgb", "rgb")
 importFrom("graphics", "lines", "polygon")
 importFrom("stats", "optim")

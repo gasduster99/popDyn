@@ -135,8 +135,9 @@ prodModel = R6::R6Class("ProdModel", lock_objects=FALSE,
                 #' @description The main function for printing this class
                 #' @param ins ins
 		printSelf = function(ins=c()){
+			#NOTE: figure out a workaround for printing functions, here I just remove them
 			self$printer(ins, outs=c(
-				"iterate", "optimize", "model",	"prior", 
+				"iterate", "optimize", "model",	"prior", "like", 
 				"plotMean", "plotBand", "plotRS", "N0Funk", 
 				"save", "load", "printer"
 			))
