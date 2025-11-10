@@ -107,6 +107,8 @@ the following in an R shell:
 
     schnuteDDModel$shiny()
 
+![Example Shiny
+App](https://github.com/gasduster99/fishKitLearn/blob/main/shiny.png?raw=true)
 \[Insert screenshot\]{./shiny.png}
 
 <!--
