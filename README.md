@@ -109,7 +109,6 @@ the following in an R shell:
 
 ![Example Shiny
 App](https://github.com/gasduster99/fishKitLearn/blob/main/shiny.png?raw=true)
-\[Insert screenshot\]{./shiny.png}
 
 <!--
 ### Manual BH ddModel configuration
