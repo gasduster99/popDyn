@@ -32,8 +32,8 @@ as will be described in the next section about manually configuring
 models. That said, a Schnute production model is also automatically 
 configured and provided by default. 
 
-This model uses a three parameter Schnute production^[[cite](link.pdf)], natural mortality, 
-and fishing mortality as follows:
+This model uses a three parameter Schnute production^[Jon Schnute. A General Theory for Analysis of Catch and Effort Data. Canadian Journal of Fisheries and Aquatic Sciences, 42(3):414–429, March 1985.], 
+natural mortality, and fishing mortality as follows:
 
 $$
 \begin{align*}
@@ -50,17 +50,17 @@ For $\gamma<-1$ a family  of strictly increasing Cushing-like [15] curves arise,
 culminating in linear production as $\gamma\rightarrow-\infty$. More Information 
 about this model and how it estimates reference points see ^[[Grunloh, N. (2024) A Metamodeling Approach for Bias Estimation of Biological Reference Points. (Doctoral dissertation, University of California Santa Cruz).](https://escholarship.org/uc/item/1th4n7kd)].
 
-This Schnute production model is initialized to the `schnuteProdModel` default 
+This Schnute production model is initialized to the `schnuteProdMod` default 
 instance of the `prodModel` class. You can see the default state of the model by 
 running the following, to print the model to your R shell and see the mean response 
 value.
 
 ```
 #A default Schnute model configuration is provided in the package
-schnuteProdModel$printSelf()
+schnuteProdMod$printSelf()
 
 #Plot
-schnuteProdModel$plotMean()
+schnuteProdMod$plotMean()
 ```
 
 To parameterize this model to your species of interest, you must add your own 
@@ -73,11 +73,11 @@ cpue  = c(1.78, 1.31, 0.91, 0.96, 0.88, 0.90, 0.87, 0.72, 0.57, 0.45, 0.42, 0.42
 catch = c(94, 212, 195, 383, 320, 402, 366, 606, 378, 319, 309, 389, 277, 254, 170, 97, 91, 177, 216, 229, 211, 231, 223)
 TT = length(catch)
 #
-schnuteProdModel$time = 1:TT
-schnuteProdModel$catch = catch
+schnuteProdMod$time = 1:TT
+schnuteProdMod$catch = catch
 
 #optimize parameters
-opt = schnuteProdModel$optimize(cpue,
+opt = schnuteProdMod$optimize(cpue,
         	  c('lsdo'    , 'lalpha', 'lbeta'   ),
         lower   = c(log(0.001), log(0.1), log(1000) ),
         upper   = c(log(0.3)  , 0       , log(10000)),
@@ -85,12 +85,12 @@ opt = schnuteProdModel$optimize(cpue,
 )
 
 #Update Plot
-schnuteProdModel$plotMean(add=T, col='blue')
-schnuteProdModel$plotBand(col='blue')
+schnuteProdMod$plotMean(add=T, col='blue')
+schnuteProdMod$plotBand(col='blue')
 ```
 
 At this time it is only possible to fit to a single index. However you can optimize any parameter 
-that you can see in the `schnuteProdModel` instance by simply adding its name, and optimization bounds above. 
+that you can see in the `schnuteProdMod` instance by simply adding its name, and optimization bounds above. 
 
 ### Example of Manual Schaefer Model Instantiation
 
