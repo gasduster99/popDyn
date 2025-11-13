@@ -35,11 +35,13 @@ configured and provided by default.
 This model includes three parameter Schnute production^[[cite](link.pdf)], natural mortality, 
 and fishing mortality as follows.
 
+$$
 \begin{align*}
 &I_t = q B_t e^\epsilon ~~~ \epsilon\sim N(0, \sigma^2)\\
 &\frac{dB}{dt} = P_{S}(B;[\alpha, \beta]) -(M+F)B\\~\\
 &P_{S}(B;[\alpha, \beta, \gamma]) = \alpha B(1-\beta\gamma B)^{\frac{1}{\gamma}}
 \end{align*}
+$$
 
 Logistic (Schaefer) Model `\gamma=1`, Ricker Model `\gamma\rightarrow0`, Beverton-Holt `\gamma=-1`
 
