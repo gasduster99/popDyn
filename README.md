@@ -30,10 +30,10 @@ $$
 
 This is a versatile model that allows for the specification of many
 common models by fixing $\gamma$. The BH and Logistic (Schaefer) Models
-arise when && is fixed to -1 or 1 respectively. The Ricker model is a
-limiting case as &&. For &\<-1& a family of strictly increasing
-Cushing-like \[15\] curves arise, culminating in linear production as
-&-&.
+arise when $\gamma$ is fixed to -1 or 1 respectively. The Ricker model
+is a limiting case as $\gamma\rightarrow0$. For $\gamma<-1$ a family of
+strictly increasing Cushing-like \[15\] curves arise, culminating in
+linear production as $\gamma\rightarrow-\infnty$.
 
 More Information about this model and Reference Point estimation see
 [^2].
