@@ -33,21 +33,30 @@ common models by fixing $\gamma$. The BH and Logistic (Schaefer) Models
 arise when $\gamma$ is fixed to -1 or 1 respectively. The Ricker model
 is a limiting case as $\gamma\rightarrow0$. For $\gamma<-1$ a family of
 strictly increasing Cushing-like \[15\] curves arise, culminating in
-linear production as $\gamma\rightarrow-\infnty$.
+linear production as $\gamma\rightarrow-\infty$. More Information about
+this model and how it estimates reference points see [^2].
 
-More Information about this model and Reference Point estimation see
-[^2].
+This Schnute production model is initialized to the `schnuteProdModel`
+default instance of the `prodModel` class. You can see the default state
+of the model by running the following, to print the model to your R
+shell and see the mean response value.
 
 \`\` \#A default Schnute model configuration is provided in the package
 schnuteProdModel\$printSelf()
 
-\#Plot schnuteProdModel\$plotMean()
+\#Plot schnuteProdModel\$plotMean() \`\`
 
-\#Update with your own data cpue = c(1.78, 1.31, 0.91, 0.96, 0.88, 0.90,
-0.87, 0.72, 0.57, 0.45, 0.42, 0.42, 0.49, 0.43, 0.40, 0.45, 0.55, 0.53,
-0.58, 0.64, 0.66, 0.65, 0.63) catch = c(94, 212, 195, 383, 320, 402,
-366, 606, 378, 319, 309, 389, 277, 254, 170, 97, 91, 177, 216, 229, 211,
-231, 223) TT = length(catch) \# schnuteProdModel$time = 1:TT
+To parameterize this model to your species of interest, you must add
+your own catch data and time settings. At which point, the model is
+ready to optimize whichever parameters you would like from the given
+index data.
+
+\`\` \#Update with your own data, here is Nimibian Hake for example.
+cpue = c(1.78, 1.31, 0.91, 0.96, 0.88, 0.90, 0.87, 0.72, 0.57, 0.45,
+0.42, 0.42, 0.49, 0.43, 0.40, 0.45, 0.55, 0.53, 0.58, 0.64, 0.66, 0.65,
+0.63) catch = c(94, 212, 195, 383, 320, 402, 366, 606, 378, 319, 309,
+389, 277, 254, 170, 97, 91, 177, 216, 229, 211, 231, 223) TT =
+length(catch) \# schnuteProdModel$time = 1:TT
 schnuteProdModel$catch = catch
 
 \#optimize parameters opt = schnuteProdModel\$optimize(cpue, c(‘lsdo’ ,
@@ -56,6 +65,10 @@ schnuteProdModel$catch = catch
 
 \#Update Plot schnuteProdModel$plotMean(add=T, col='blue')
 schnuteProdModel$plotBand(col=‘blue’) \`\`
+
+At this time it is only possible to fit to a single index. However you
+can optimize any parameter that you can see in the `schnuteProdModel`
+instance by simply adding its name, and optimization bounds above.
 
 ### Example of Manual Schaefer Model Instantiation
 
@@ -142,7 +155,9 @@ alt="Example Shiny App" />
 
 [^1]: [cite](link.pdf)
 
-[^2]: [cite](link.pdf)
+[^2]: [Grunloh, N. (2024) A Metamodeling Approach for Bias Estimation of
+    Biological Reference Points. (Doctoral dissertation, University of
+    California Santa Cruz).](https://escholarship.org/uc/item/1th4n7kd)
 
 [^3]: [Walters, The Continuous Time Schnute-Deriso Delaydifference Model
     for Age-Structured Population Dynamics, with Example Application to
