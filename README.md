@@ -17,8 +17,8 @@ models, as will be described in the next section about manually
 configuring models. That said, a Schnute production model is also
 automatically configured and provided by default.
 
-This model includes three parameter Schnute production[^1], natural
-mortality, and fishing mortality as follows.
+This model uses a three parameter Schnute production[^1], natural
+mortality, and fishing mortality as follows:
 
 $$
 \begin{align*}
@@ -28,8 +28,14 @@ $$
 \end{align*}
 $$
 
-Logistic (Schaefer) Model `\gamma=1`, Ricker Model `\gamma\rightarrow0`,
-Beverton-Holt `\gamma=-1`
+This is a versatile model that allows for the specification of many
+common models by fixing &&. The BH and Logistic (Schaefer) Models arise
+when && is fixed to -1 or 1 respectively. The Ricker model is a limiting
+case as &&. For &\<-1& a family of strictly increasing Cushing-like
+\[15\] curves arise, culminating in linear production as &-&.
+
+More Information about this model and Reference Point estimation see
+[^2].
 
 \`\` \#A default Schnute model configuration is provided in the package
 schnuteProdModel\$printSelf()
@@ -94,7 +100,7 @@ schnuteProdModel$plotBand(col=‘blue’) \`\`
 
 ## Delay Differential Models
 
-### Automatic Schnute-Deriso Delay Differential Model [^2]
+### Automatic Schnute-Deriso Delay Differential Model [^3]
 
     #A default Schnute model configuration is provided in the package
     schnuteDDModel$printSelf()
@@ -135,7 +141,9 @@ alt="Example Shiny App" />
 
 [^1]: [cite](link.pdf)
 
-[^2]: [Walters, The Continuous Time Schnute-Deriso Delaydifference Model
+[^2]: [cite](link.pdf)
+
+[^3]: [Walters, The Continuous Time Schnute-Deriso Delaydifference Model
     for Age-Structured Population Dynamics, with Example Application to
     the Peru Anchoveta
     Stock.](https://fisheries-2023.sites.olt.ubc.ca/files/2020/06/1Continuous-time-Schnute-Deriso-model-Final.pdf)
