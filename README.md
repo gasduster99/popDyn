@@ -34,9 +34,9 @@ This is a versatile model that allows for the specification of many
 common models by fixing $\gamma$. The BH and Logistic (Schaefer) Models
 arise when $\gamma$ is fixed to -1 or 1 respectively. The Ricker model
 is a limiting case as $\gamma\rightarrow0$. For $\gamma<-1$ a family of
-strictly increasing Cushing-like \[15\] curves arise, culminating in
-linear production as $\gamma\rightarrow-\infty$. More Information about
-this model and how it estimates reference points see [^2].
+strictly increasing Cushing-like curves arise, culminating in linear
+production as $\gamma\rightarrow-\infty$. More Information about this
+model and how it estimates reference points see\[[^2]\].
 
 This Schnute production model is initialized to the `schnuteProdMod`
 default instance of the `prodModel` class. You can see the default state
@@ -138,14 +138,14 @@ above, except that lag values and lagged derivatives are specified with
 the `lagvalue` and `lagderiv` functions as would be used with `dede`
 from the `deSolve` package.
 
-### Automatic Schnute-Deriso Delay Differential Model [^3]
+### Automatic Schnute-Deriso Delay Differential Model
 
-The Schnute-Deriso DDM as specified by Walters[^4] is automatically
+The Schnute-Deriso DDM as specified by Walters\[[^3]\] is automatically
 provided here in the `schnuteDDMod` object. In this package the model is
 constructed with the three parameter Schnute Stock Recruitment
 relationship so as to allow the same versatile access to Ricker, BH and
 Logistic recruitment model through $\gamma$. For more information about
-this model and how it estimates reference points see [^5].
+this model and how it estimates reference points see\[[^4]\].
 
     #A default Schnute model configuration is provided in the package
     schnuteDDModel$printSelf()
@@ -167,18 +167,14 @@ this model and how it estimates reference points see [^5].
 
 #### Shiny App
 
-A shiny app is provided here to visualize the most common metric one may
-be interested for this model. The shiny app allows the user to perform
-retime sensativities to model parameters.
+A shiny app is provided here to visualize the most common metrics one
+may be interested for this model. The shiny app allows the user to
+perform real-time sensativities of all metrics with respect to the model
+parameters.
 
     schnuteDDModel$launchShinyApp()
 
-<figure>
-<img
-src="https://github.com/gasduster99/fishKitLearn/blob/main/shiny.png?raw=true"
-alt="Example Shiny App" />
-<figcaption aria-hidden="true">Example Shiny App</figcaption>
-</figure>
+![](https://github.com/gasduster99/fishKitLearn/blob/main/shiny.png?raw=true)
 
 <!--
 ### Manual BH ddModel configuration
@@ -201,11 +197,6 @@ alt="Example Shiny App" />
     the Peru Anchoveta
     Stock.](https://fisheries-2023.sites.olt.ubc.ca/files/2020/06/1Continuous-time-Schnute-Deriso-model-Final.pdf)
 
-[^4]: [Walters, The Continuous Time Schnute-Deriso Delaydifference Model
-    for Age-Structured Population Dynamics, with Example Application to
-    the Peru Anchoveta
-    Stock.](https://fisheries-2023.sites.olt.ubc.ca/files/2020/06/1Continuous-time-Schnute-Deriso-model-Final.pdf)
-
-[^5]: [Grunloh, N. (2024) A Metamodeling Approach for Bias Estimation of
+[^4]: [Grunloh, N. (2024) A Metamodeling Approach for Bias Estimation of
     Biological Reference Points. (Doctoral dissertation, University of
     California Santa Cruz).](https://escholarship.org/uc/item/1th4n7kd)
