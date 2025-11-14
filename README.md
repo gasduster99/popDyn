@@ -198,4 +198,4 @@ parameters.
     the Peru Anchoveta
     Stock.](https://fisheries-2023.sites.olt.ubc.ca/files/2020/06/1Continuous-time-Schnute-Deriso-model-Final.pdf)
 
-[^4]: 2
+[^4]: [2](https://escholarship.org/uc/item/1th4n7kd)
