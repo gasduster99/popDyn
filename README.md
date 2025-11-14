@@ -145,9 +145,8 @@ provided here in the `schnuteDDMod` object. In this package the model is
 constructed with the three parameter Schnute Stock Recruitment
 relationship so as to allow the same versatile access to Ricker, BH and
 Logistic recruitment model through $\gamma$. For more information about
-this model and how it estimates reference points
-\$^(<a href="https://escholarship.org/uc/item/1th4n7kd)\right"
-class="uri">https://escholarship.org/uc/item/1th4n7kd)\right</a>\].
+this model and how it estimates reference points see
+[2](https://escholarship.org/uc/item/1th4n7kd).
 <!--[Grunloh, N. (2024) A Metamodeling Approach for Bias Estimation of Biological Reference Points. (Doctoral dissertation, University of California Santa Cruz).](https://escholarship.org/uc/item/1th4n7kd)].-->
 
     #A default Schnute model configuration is provided in the package
