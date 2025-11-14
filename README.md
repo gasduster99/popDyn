@@ -145,7 +145,8 @@ provided here in the `schnuteDDMod` object. In this package the model is
 constructed with the three parameter Schnute Stock Recruitment
 relationship so as to allow the same versatile access to Ricker, BH and
 Logistic recruitment model through $\gamma$. For more information about
-this model and how it estimates reference points \$[^4].
+this model and how it estimates reference points
+\$^$$[2](https://escholarship.org/uc/item/1th4n7kd)$$.
 <!--[Grunloh, N. (2024) A Metamodeling Approach for Bias Estimation of Biological Reference Points. (Doctoral dissertation, University of California Santa Cruz).](https://escholarship.org/uc/item/1th4n7kd)].-->
 
     #A default Schnute model configuration is provided in the package
@@ -197,5 +198,3 @@ parameters.
     for Age-Structured Population Dynamics, with Example Application to
     the Peru Anchoveta
     Stock.](https://fisheries-2023.sites.olt.ubc.ca/files/2020/06/1Continuous-time-Schnute-Deriso-model-Final.pdf)
-
-[^4]: [2](https://escholarship.org/uc/item/1th4n7kd)
